@@ -72,6 +72,24 @@ ol {
     flex-wrap: wrap;
 }
 
+.square-container3{
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    border : 1px solid #da2a90;
+    display: grid;
+    aspect-ratio: 1.2;
+    /* grid-template-columns: auto auto auto; */
+    grid-template-areas: "header header header header header"
+    "left-sidebar post post ... right-sidebar"
+    "left-sidebar post post ... right-sidebar"
+    "left-sidebar post post ... ..."
+    "left-sidebar post post ... ..."
+    "footer footer footer footer footer";
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
 .red-square{
     background-color: rgb(182, 182, 182);
     width: 150px;
@@ -84,4 +102,11 @@ ol {
     
     /* flex-shrink: 0; */
     /* display: inline-block; */
+}
+
+.red-square2{
+    background-color: red;
+    width: 100%;
+    /* height: 100px; */
+    border-radius: 20px;
 }
