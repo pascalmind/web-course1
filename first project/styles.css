@@ -1,0 +1,21 @@
+nav{
+    font-family : Geneva, Verdana, sans-serif;
+    display: flex;
+    width: 50%;
+    gap: 5%;
+    padding: 0px;
+}
+a{
+    text-decoration: none;
+    padding: 5px;
+    background-color: #161f4d;
+    border-radius: 20px;
+    width: 20%;
+    color: white;
+    text-align: center;
+}
+
+a:hover{
+    background-color: #3d456e;
+    
+}
