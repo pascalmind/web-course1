@@ -1,11 +1,15 @@
 nav{
+    margin-top: 2rem;
+    margin-inline-start: 1rem;
     font-family : Geneva, Verdana, sans-serif;
     display: flex;
     width: 50%;
     gap: 5%;
     padding: 0px;
+    
 }
 a{
+    border:2px solid white;
     text-decoration: none;
     padding: 5px;
     background-color: #161f4d;
@@ -13,9 +17,69 @@ a{
     width: 20%;
     color: white;
     text-align: center;
+    margin-top: 2rem;
 }
 
 a:hover{
     background-color: #3d456e;
     
+}
+
+.headbanner{
+    width: 100vw;
+    height: 33.33vw;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+}
+
+.main-title{
+    position: absolute;
+    font-size: 5rem;
+    top: 20vw;
+    left : 4rem;
+}
+
+.main-container{
+    overflow-x: hidden;
+    display: grid;
+
+    grid-template-areas: " sidebar-left content-frame content-frame content-frame sidebar-right ";
+    min-height: 100vh;
+    gap: 0rem;
+    margin: 0rem;
+}
+
+.r-sidebar{
+    grid-area: sidebar-right;
+    background-color: rgb(219, 219, 219);
+    width: 20vw;
+    
+    height: 100%;
+    border-radius: 2rem;
+}
+
+.l-sidebar{
+    grid-area: sidebar-left;
+    background-color: rgb(219, 219, 219);
+    width: 20vw;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+.content-box{
+    grid-area: content-frame;
+    background-color: aqua;
+    width: calc(60vw - 4rem);
+    margin: 2rem;
+    border-radius: 4rem;
+}
+.profile-photo{
+    background-image: url("public/avatar.webp");
+    width: 10rem;
+    height: 10rem;
+    background-size: contain;
+
+
 }
