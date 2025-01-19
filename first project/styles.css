@@ -20,6 +20,21 @@ a{
     margin-top: 2rem;
 }
 
+ 
+.product-card{
+    background-color: rgb(182, 182, 182);
+    width: 150px;
+    height: fit-content;
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    /* flex-shrink: 0; */
+    /* display: inline-block; */
+}
+
 a:hover{
     background-color: #3d456e;
     

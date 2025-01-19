@@ -4,6 +4,27 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body style="margin: 0%;">
+
+    <script>
+        async function getData() {
+            const image = document.getElementById('prod-img');
+            const title = document.getElementById('prod-title');
+            const desc = document.getElementById('prod-desc');
+            const res = await fetch("https://api.sampleapis.com/coffee/hot");
+            if (res.status === 200) {
+                const data = await res.json();
+                console.log("Response Data : " , data);
+                image.setAttribute('src',data[5].image);
+                title.innerHTML = data[5].title;
+                desc.innerHTML = data[5].description;
+            }
+            else{
+                console.log(res.status , " : " , res.statusText)
+            }
+        }
+    </script>
+
+
     <header>
         <div style="background-image: url('public/headbanner.jpg');height: 33vw; 
         background-repeat: no-repeat; background-size:cover; position: relative;">
@@ -27,7 +48,18 @@
                     </div>
                 </div>
                 <div class="content-box">
-
+                    <button onclick="getData()" 
+                    style="padding: 2px; background-color: cadetblue; border-radius: 10px;">Fetch Data</button>
+                    
+                    <div class="product-card">
+                        <img id="prod-img" src="https://tookaarts.com/wp-content/uploads/2018/04/012.jpg" 
+                    alt="some woman"
+                    style="width: 80%; border-radius: 15px; margin-top: 10%;"
+                     />
+                    <h2 id="prod-title" style="color:  black ; margin-top: 4px; margin-bottom: 0px; font-size: 12px; width: 100%; text-align: center">Product Instance</h2>
+                    <h3 id="prod-desc" style="color: blue; margin-top: 4px; font-size: 12px; width: 100%; text-align: center; ">Price : 1500$</h3>
+                    </div>
+                
                 </div>
                 <div class="l-sidebar">
                     
