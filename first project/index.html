@@ -7,16 +7,34 @@
 
     <script>
         async function getData() {
+            const parent = document.getElementById('prod-container')
             const image = document.getElementById('prod-img');
             const title = document.getElementById('prod-title');
             const desc = document.getElementById('prod-desc');
-            const res = await fetch("https://api.sampleapis.com/coffee/hot");
+            const res = await fetch("https://api.sampleapis.com/wines/reds");
             if (res.status === 200) {
                 const data = await res.json();
                 console.log("Response Data : " , data);
                 image.setAttribute('src',data[5].image);
-                title.innerHTML = data[5].title;
-                desc.innerHTML = data[5].description;
+                title.innerHTML = data[5].wine;
+                desc.innerHTML = data[5].winery;
+                for(let i=0;i<data.length;i++) {
+                    const new_product = document.createElement('div')
+
+                    new_product.innerHTML = `
+                    <div class="product-card">
+                            <img  src=${data[i].image} 
+                        alt="some woman"
+                        style="height: 60%; border-radius: 15px; margin-top: 10%;"
+                        />
+                        <h2  style="color:  black ; margin-top: 4px; margin-bottom: 0px; font-size: 12px; width: 100%; text-align: center">${data[i].wine}</h2>
+                        <h3  style="color: blue; margin-top: 4px; font-size: 12px; width: 100%; text-align: center; ">${data[i].winery}</h3>
+                    </div>`
+
+                    parent.appendChild(new_product)
+                }
+                
+
             }
             else{
                 console.log(res.status , " : " , res.statusText)
@@ -47,14 +65,14 @@
                         
                     </div>
                 </div>
-                <div class="content-box">
+                <div id="prod-container" class="content-box">
                     <button onclick="getData()" 
                     style="padding: 2px; background-color: cadetblue; border-radius: 10px;">Fetch Data</button>
                     
                     <div class="product-card">
                         <img id="prod-img" src="https://tookaarts.com/wp-content/uploads/2018/04/012.jpg" 
                     alt="some woman"
-                    style="width: 80%; border-radius: 15px; margin-top: 10%;"
+                    style="height: 60%; border-radius: 15px; margin-top: 10%;"
                      />
                     <h2 id="prod-title" style="color:  black ; margin-top: 4px; margin-bottom: 0px; font-size: 12px; width: 100%; text-align: center">Product Instance</h2>
                     <h3 id="prod-desc" style="color: blue; margin-top: 4px; font-size: 12px; width: 100%; text-align: center; ">Price : 1500$</h3>

@@ -24,7 +24,7 @@ a{
 .product-card{
     background-color: rgb(182, 182, 182);
     width: 150px;
-    height: fit-content;
+    height: 250px;
     margin: 10px;
     border-radius: 20px;
     display: flex;
@@ -89,6 +89,10 @@ a:hover{
     width: calc(60vw - 4rem);
     margin: 2rem;
     border-radius: 4rem;
+    display: flex;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+
 }
 .profile-photo{
     background-image: url("public/avatar.webp");
