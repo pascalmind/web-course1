@@ -11,24 +11,41 @@
             const image = document.getElementById('prod-img');
             const title = document.getElementById('prod-title');
             const desc = document.getElementById('prod-desc');
-            const res = await fetch("https://api.sampleapis.com/wines/reds");
+            const res = await fetch("https://fake-json-api.mock.beeceptor.com/companies");
             if (res.status === 200) {
                 const data = await res.json();
-                console.log("Response Data : " , data);
-                image.setAttribute('src',data[5].image);
-                title.innerHTML = data[5].wine;
-                desc.innerHTML = data[5].winery;
+                console.log("Response Data : " , (data));
+                //alert(JSON.stringify(data))
+                image.setAttribute('src',data[5].logo);
+                title.innerHTML = data[5].name;
+                desc.innerHTML = data[5].domain;
+                const testObj = {
+                    "id": 1,
+                    "name": "Forest Nolan",
+                    "company": "Stehr, Gerhold and Wilderman",
+                    "username": "Jordi77",
+                    "email": "Corbin22@yahoo.com",
+                    "address": "718 Gloria Ridges",
+                    "zip": "89416-7161",
+                    "state": "Georgia",
+                    "country": "Georgia",
+                    "phone": "304.831.5001 x27376",
+                    "photo": "https://json-server.dev/ai-profiles/31.png"
+                }
+                for(const c in testObj ){
+                    console.log(" for value : ",testObj[c])
+                }
                 for(let i=0;i<data.length;i++) {
                     const new_product = document.createElement('div')
 
                     new_product.innerHTML = `
                     <div class="product-card">
-                            <img  src=${data[i].image} 
+                            <img  src=${data[i].logo} 
                         alt="some woman"
                         style="height: 60%; border-radius: 15px; margin-top: 10%;"
                         />
-                        <h2  style="color:  black ; margin-top: 4px; margin-bottom: 0px; font-size: 12px; width: 100%; text-align: center">${data[i].wine}</h2>
-                        <h3  style="color: blue; margin-top: 4px; font-size: 12px; width: 100%; text-align: center; ">${data[i].winery}</h3>
+                        <h2  style="color:  black ; margin-top: 4px; margin-bottom: 0px; font-size: 12px; width: 100%; text-align: center">${data[i].name}</h2>
+                        <h3  style="color: blue; margin-top: 4px; font-size: 12px; width: 100%; text-align: center; ">${data[i].domain}</h3>
                     </div>`
 
                     parent.appendChild(new_product)
@@ -39,6 +56,27 @@
             else{
                 console.log(res.status , " : " , res.statusText)
             }
+        }
+        let x = 0
+        function add(n=0){
+            x +=n;
+        }
+        let arr = [21,43,2,6,33,86]
+        function testLoop(){
+            arr.forEach(add)
+            console.log("result :", x)
+            let k=0
+            while(k>0){
+               k++ 
+               console.log("while result : ",k)
+                
+            }
+            let h=0
+            do{
+                h++
+                console.log("do while result : ",h)
+                
+            }while(h>0 && h<5)
         }
     </script>
 
@@ -58,7 +96,13 @@
             <h1 class="main-title" onclick="">Learn Shop Home Page</h1>
         </div>
     </header>
-    <main>
+    <main style="width: 100vw; text-align: center;">
+        
+        <button onclick="getData()" 
+        style="padding: 2px; background-color: cadetblue; border-radius: 10px; margin-left: auto; margin-right: auto; width: 20rem ; height: 4rem;">Fetch Data</button>
+        
+        <button onclick="testLoop()" 
+        style="padding: 2px; background-color: rgb(100, 28, 158); border-radius: 10px; margin-left: auto; margin-right: auto; width: 20rem ; height: 4rem;">For Test</button>
         <div class="main-container">
                 <div class="r-sidebar">
                     <div class="profile-photo">
@@ -66,8 +110,7 @@
                     </div>
                 </div>
                 <div id="prod-container" class="content-box">
-                    <button onclick="getData()" 
-                    style="padding: 2px; background-color: cadetblue; border-radius: 10px;">Fetch Data</button>
+                    
                     
                     <div class="product-card">
                         <img id="prod-img" src="https://tookaarts.com/wp-content/uploads/2018/04/012.jpg" 
