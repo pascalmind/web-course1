@@ -154,19 +154,27 @@
         const btnObj = document.getElementById('test-btn');
         const imgObj = document.getElementById('prod-img');
         
-        
-        navObj.addEventListener('mousemove', (e)=>{navTouch++ ; setStats(navTouch,btnTouch, imgTouch) })
-        btnObj.addEventListener('mousemove', (e)=>{btnTouch++ ; setStats(navTouch,btnTouch, imgTouch)})    
-        imgObj.addEventListener('mousemove', (e)=>{imgTouch++ ; setStats(navTouch,btnTouch, imgTouch)})
+        function listener1(){
+            navTouch++ ; setStats(navTouch,btnTouch, imgTouch)
+        }
+        function listener2(){
+            btnTouch++ ; setStats(navTouch,btnTouch, imgTouch)
+        }
+        function listener3(){
+            imgTouch++ ; setStats(navTouch,btnTouch, imgTouch)
+        }
+        navObj.addEventListener('mousemove',listener1)
+        btnObj.addEventListener('mousemove', listener2)    
+        imgObj.addEventListener('mousemove', listener3)
             
         function clearListeners(){
             const navObj = document.getElementById('navbar');
         const btnObj = document.getElementById('test-btn');
         const imgObj = document.getElementById('prod-img');
             console.log("clicked")
-            navObj.removeEventListener('mousemove', (e)=>{navTouch++ ; setStats(navTouch,btnTouch, imgTouch) });
-            btnObj.removeEventListener('mousemove', (e)=>{btnTouch++ ; setStats(navTouch,btnTouch, imgTouch)});    
-            imgObj.removeEventListener('mousemove', (e)=>{imgTouch++ ; setStats(navTouch,btnTouch, imgTouch)});
+            navObj.removeEventListener('mousemove',listener1);
+            btnObj.removeEventListener('mousemove', listener2);    
+            imgObj.removeEventListener('mousemove', listener3);
         
         }
     
