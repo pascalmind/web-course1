@@ -5,6 +5,8 @@
 </head>
 <body style="margin: 0%;">
 
+    
+
     <script>
         async function getData() {
             const parent = document.getElementById('prod-container')
@@ -65,18 +67,18 @@
         function testLoop(){
             arr.forEach(add)
             console.log("result :", x)
-            let k=0
-            while(k>0){
+            let k=1
+            while(k>1){
                k++ 
                console.log("while result : ",k)
                 
             }
-            let h=0
+            let h=1
             do{
-                h++
+                h *= h+1
                 console.log("do while result : ",h)
                 
-            }while(h>0 && h<5)
+            }while(h>1 )
         }
     </script>
 
@@ -87,7 +89,12 @@
             <!-- <div  style="position: relative;">
                 <img src="public/headbanner.jpg" width=1000 height=333 class="headbanner"  />
             </div> -->
-            <nav>
+            <div id="statistics" style="position: absolute; width: fit-content; top: 5px; right: 5px; background-color: white ; padding: 10px; border-radius: 10px; ">
+                <h4>Navbar :  0</h4>
+                <h4>Test Button : 0</h4>
+                <h4>Image : 0</h4>
+            </div>
+            <nav id="navbar">
                 <a href="D:\Web Course\FrontEnd\Html Basics\first project\index.html">&#x2302; Home</a>
                 <a href="D:\Web Course\FrontEnd\Html Basics\first project\shop\shop.html">Shop</a>
                 <a href="D:\Web Course\FrontEnd\Html Basics\first project\about\about.html">About Us</a>
@@ -101,7 +108,7 @@
         <button onclick="getData()" 
         style="padding: 2px; background-color: cadetblue; border-radius: 10px; margin-left: auto; margin-right: auto; width: 20rem ; height: 4rem;">Fetch Data</button>
         
-        <button onclick="testLoop()" 
+        <button id="test-btn" onclick="clearListeners()" 
         style="padding: 2px; background-color: rgb(100, 28, 158); border-radius: 10px; margin-left: auto; margin-right: auto; width: 20rem ; height: 4rem;">For Test</button>
         <div class="main-container">
                 <div class="r-sidebar">
@@ -119,7 +126,9 @@
                      />
                     <h2 id="prod-title" style="color:  black ; margin-top: 4px; margin-bottom: 0px; font-size: 12px; width: 100%; text-align: center">Product Instance</h2>
                     <h3 id="prod-desc" style="color: blue; margin-top: 4px; font-size: 12px; width: 100%; text-align: center; ">Price : 1500$</h3>
-                    </div>
+                    <audio src="https:\/\/host2.rjapp-content.app\/media\/mp3\/mp3-256\/139683-73f51c72e4b80f6.mp3" controls></audio>
+                
+                </div>
                 
                 </div>
                 <div class="l-sidebar">
@@ -127,5 +136,43 @@
                 </div>
         </div>
     </main>
+    <script>
+        const statBox2 = document.getElementById("statistics")
+        function setStats(n,b,i){
+            const statBox = document.getElementById("statistics")
+            statBox.innerHTML = `
+                <h4>Navbar : ${n} </h4>
+                <h4>Test Button : ${b} </h4>
+                <h4>Image : ${i} </h4>
+            `
+        }        
+        let navTouch = 0
+        let btnTouch = 0
+        let imgTouch = 0
+
+        const navObj = document.getElementById('navbar');
+        const btnObj = document.getElementById('test-btn');
+        const imgObj = document.getElementById('prod-img');
+        
+        
+        navObj.addEventListener('mousemove', (e)=>{navTouch++ ; setStats(navTouch,btnTouch, imgTouch) })
+        btnObj.addEventListener('mousemove', (e)=>{btnTouch++ ; setStats(navTouch,btnTouch, imgTouch)})    
+        imgObj.addEventListener('mousemove', (e)=>{imgTouch++ ; setStats(navTouch,btnTouch, imgTouch)})
+            
+        function clearListeners(){
+            const navObj = document.getElementById('navbar');
+        const btnObj = document.getElementById('test-btn');
+        const imgObj = document.getElementById('prod-img');
+            console.log("clicked")
+            navObj.removeEventListener('mousemove', (e)=>{navTouch++ ; setStats(navTouch,btnTouch, imgTouch) });
+            btnObj.removeEventListener('mousemove', (e)=>{btnTouch++ ; setStats(navTouch,btnTouch, imgTouch)});    
+            imgObj.removeEventListener('mousemove', (e)=>{imgTouch++ ; setStats(navTouch,btnTouch, imgTouch)});
+        
+        }
+    
+        
+    
+    </script>
+
 </body>
 </html>
